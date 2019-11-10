@@ -1,17 +1,22 @@
 <!DOCTYPE html>
-<!--
-    Type on Strap jekyll theme v2.0.0
-    Copyright 2016-2019 Sylhare
-    Theme free for personal and commercial use under the MIT license
-    https://github.com/sylhare/Type-on-Strap/blob/master/LICENSE
--->
-<html lang="en">
-  {% include head.html %}
-  <body>
-    {% include navbar.html %}
-    <div class="content">
-      {{ content }}
+<html lang="en-us">
+
+{% include head.html %}
+
+<body>
+    
+    <div class="page-wrap">
+        {% include header.html %}
+        <main>
+            {{ content }}
+        </main>
     </div>
+    
     {% include footer.html %}
-  </body>
+
+    <script src="/assets/js/vendor/jquery.min.js"></script>
+    <script src="/assets/js/vendor/semantic.min.js"></script>
+    <script type="/assets/js/main.js"></script>
+</body>
+
 </html>
