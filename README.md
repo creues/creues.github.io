@@ -1,198 +1,250 @@
-LOFFER是个可以帮助你get off from LOFTER的软件（我知道这个pun很烂）。
-
-这是一个可以通过Fork直接发布在GitHub的Jekyll博客，你不需要编写代码或使用命令行即可获得一个部署在GitHub的博客。
-
-## 更新内容
-
-### 2019-07-25 V0.4.0
-
-修订目录跳级会坏掉的问题，不算完美解决，但不会坏掉了。
-
-增加对LaTeX渲染的支持，请见[这篇说明和示例](https://fromendworld.github.io/LOFFER/math-test/)。
-
-增加置顶功能，只要在一个post的YAML Front Matter（就是文章头部的这段信息）中加入` pinned: true `，这篇文章就可以置顶了。
-
-另外介绍一个给LOFFER更换主题颜色的手法。LOFFER用了一个开源的颜色表[Open Color](https://yeun.github.io/open-color/),该色表提供的可选颜色有：red, pink, grape, violet, indigo, blue, cyan, teal, green, lime, yellow。
-
-LOFFER的默认状态是teal，要更换主题颜色，只要打开文件` _sass/_variables.scss `，将文件中所有的teal全部替换成你想要的颜色。例如，查找teal，替换indigo，全部替换，commit，完成！
-
-
-### 2019-07-20 V0.3.0
-
-新版本增加目录功能，在post的信息中心加入` toc: true `，这篇博文就会显示目录了。
-
-这次没有对config的修改，因此应该可以通过[这个方法](https://github.com/KirstieJane/STEMMRoleModels/wiki/Syncing-your-fork-to-the-original-repository-via-the-browser)，给自己提pull request来更新。
-
-目录基于[jekyll-toc by allejo](https://github.com/allejo/jekyll-toc)制作。
-
-目前我试用发现了一点小问题：如果你的标题级数不按套路变化，它就会搞不懂…… 
-
-` # 一级标题 `下面必须是` ## 二级标题 `，如果是` ### 三级标题 `它就人工智障了【手动扶额】
-
-注意：目前目录仅在桌面版显示。
-
-
-### 2019-06-30 V0.2.0
-
-新版本进一步优化了一下样式，并且支持了基于GitHub Issues的评论Gitalk（请看下文的配置说明）。
-
-如果你已经fork了LOFFER，想要更新到新版本的话，可以试试[这个方法](https://github.com/KirstieJane/STEMMRoleModels/wiki/Syncing-your-fork-to-the-original-repository-via-the-browser)，或者你也可以干脆删掉重来，只要保留自己的大部分config设定和所有的post就好。
-
-LOFFER只是容器，你的posts才是博客的核心。
-
-
-## 注意
-
-LOFFER是一个**博客模板**，使用GitHub Pages发布个人博客是没有任何问题的。 **但是:**
-
-- **请勿发布成人向内容** 
-- **不要将大量图片上传到GitHub**
-
-如有疑问，请阅读[GitHub Pages官方说明](https://pages.github.com/)。
-
-另外，同人作品更好的发布平台是[AO3](https://archiveofourown.org/)，你想你发在AO3还有tag还有kudos还有人看，是吧？
-
-
-## 如何使用
-
-首先，这个博客主题适应手机阅读，但是，要使用它建立你自己的博客，你需要上电脑操作。
-
-### 第一步 Fork到你的GitHub
-
-请点击[GitHub](https://github.com/)，注册一个GitHub账户。我们可以理解Git就是个文件版本管理系统，本身并不需要会代码即可使用。
-
-现在你看到的LOFFER，是作为一个GitHub上的Repository（代码库）存在的，你可以把这个代码库复制到你自己的GitHub账户中，这个操作叫做Fork。
-
-点击[LOFFER](https://github.com/FromEndWorld/LOFFER)，进入LOFFER的GitHub Repository页面，然后点Fork：
-
-![gif](https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/fork.gif)
-
-然后你立刻就可以看到LOFFER再次出现，这次它已经属于你了，这里我建议你重命名它，点击settings，给你的博客起个名字（请尽量使用字母而非中文）。
-
-![img](https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/rename.png)
-
-然后，向下拉页面，你会看到“GitHub Pages”，这是GitHub内置的网站host服务，选择master，如图所示：
-
-![img](https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/pages.png)
-
-在几秒钟后，刷新此页面，你通常会看到这个绿色的东西（如果没看到，多等一会），你的网站已经发布成功，点击这个链接，即可查看：
-
-![img](https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/published.png)
-
-你可能会看到网站长得很丑，请继续下一步.
-
-### 第二步 设置站点信息
-
-在你的博客的GitHub代码库页面里，选择Code，文件列表里选择_config.yml，点击打开，点击右上角笔形图标修改文档。
-
-修改完成后，点击“Commit changes”。每次修改过代码库并且commit后，GitHub Pages都会自动重新发布网站，只要等上几分钟，再次刷新你的博客页面，就会看到你的修改了。
-
-还有一点，**LOFFER使用的是MIT协议，大意就是全部开源随意使用，如果你要保留自己博文的权利，请编辑LICENSE文件，写上类似“_posts中的文档作者保留权利”这样的内容。**
-
-### 第三步 发布博文
-
-在你的博客的GitHub代码库页面里，点开_posts文件夹，这里面就是你的博客文章。
-
-这些文章使用的格式是Markdown，文件后缀名是md，这是一种非常简单易用的有格式文本标记语言，你应该已经注意到，在LOFFER自带的示例性博文中有一篇中文的Markdown语法介绍。
-
-更简单的办法是使用[Typora](https://typora.io/)，这是一个全图形化界面，全实时预览的Markdown写作软件，非常轻量，而且免费。
-
-![img](https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/Typora.png)
-
-在发布博文前，你需要在文章的头部添加这样的内容，包括你的文章标题，发布日期，作者名，和tag等。
-
-    ---
-    layout: post
-    title: LOFFER文档
-    date: 2019-06-02
-    Author: 来自中世界
-    categories: 
-    tags: [sample, document]
-    comments: true
-    --- 
-
-完成后，保存为.md文件，文件名是date-标题，例如 2019-06-02-document.md (注意这里的标题会成为这个post的URL，所以推荐使用字母而非中文，它不影响页面上显示的标题)，然后上传到_posts文件夹，commit，很快就可以在博客上看到新文章了。
-
-### 可选：图片怎么办？
-
-少量图片可以上传到images文件夹，然后在博文中添加。
-
-但是GitHub用来当做图床有滥用之嫌，如果你的博客以图片为主，建议选择外链图床，例如[sm.ms](https://sm.ms/)就是和很好的选择。
-
-如果想要寻找更适合自己的图床，敬请Google一下。
-
-在博文中添加图片的Markdown语法是：`![图片名](URL)`
-
-### 可选：添加评论区
-
-#### Disqus
-
-LOFFER支持Disqus评论，虽然Disqus很丑，但是它是免费的，设置起来又方便，因此大家也就不要嫌弃它。
-
-首先，注册一个[Disqus](https://disqus.com/)账户，我们可以选择这个免费方案：
-
-![img](https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/Disqus-plan.png)
-
-注册成功后，新建一个站点（site），以LOFFER为例设置步骤如下：
-
-首先站点名LOFFER，生成了shortname是loffer，类型可以随便选。
-
-![img](https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/Disqus-1.png)
-
-安装时选择Jekyll。
-
-![img](https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/Disqus-2.png)
-
-最后填入你的博客地址，语言可以选中文，点Complete，即可！
-
-![img](https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/Disqus-3.png)
-
-然后需要回到你的博客，修改_config.yml文件，在disqus字段填上你的shortname，commit，完成！
-
-#### Gitalk
-
-新增内容，LOFFER 0.2.0版本支持Gitalk评论区（在LOFFER示例站中仍然是Disqus，可以在[我的博客](https://himring.top/gitalk/)查看Gitalk的demo），设置方法如下：
-
-首先，创建一个[OAuth application](https://github.com/settings/applications/new), 设置如图：
-
-![img](https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/application_settings.png)
-
-点Register后就会看到你所需要的两个值，clientID和clientSecret，把它们复制到你的_config.yml文件中相应的字段：
-
-    gitalk:
-      clientID: <你的clientID>
-      clientSecret: <你的clientSecret>
-      repo: <你的repository名称>
-      owner: <你的GitHub用户名>
-
-然后commit，你的Gitalk评论区就会出现了。对于每一篇文章，都需要你来进入文章页，来初始化评论区，这一操作会在你的repository上创建一个Issue，此后的评论就是对这个Issue的回复。
-
-你可以进入你的repository的Issue页面，点**Unsubscribe**来避免收到大量相关邮件。
-
-注意：出于很明显的原因，最好不要同时添加Disqus和Gitalk评论区。
-
-### 导入LOFTER的内容
-
-这部分由于LOFTER的导出文件十分~~优秀~~，需要另外解决。
-
-诸位可以使用[墨问非名太太的脚本](http://underdream.lofter.com/post/38ea7d_1c5d8a983)，其中选择Jekyll输出即可。
-
-我个人也在折腾一个脚本，目前还没有完全debug清楚，不管如何，请先在lofter里导出一下，存在本地也是好的，贴吧可以让2017以前所有内容全部消失，中国互联网，没什么不可能发生的。
+---
+layout: page
+title: 关于
+permalink: /about
+---
+## 开始
+
+1. Fork [wu-kan/wu-kan.github.io](https://github.com/wu-kan/wu-kan.github.io/fork)到你的仓库，并在设置里开启gh-pages
+2. 修改`_config.yml`为你自己的信息
+3. 删除`_post/`下的博文和`public/image/`文件夹下的图片，开始写你自己的文章
+4. 详细配置可以参见[这篇博文](https://wu-kan.github.io/posts/博客搭建/基于Jekyll搭建个人博客)
+5. 欢迎<a class="github-button" aria-label="Star wu-kan/wu-kan.github.io on GitHub" href="https://github.com/wu-kan/wu-kan.github.io" data-icon="octicon-star" data-show-count="true">Star</a><a class="github-button" aria-label="Fork wu-kan/wu-kan.github.io on GitHub" href="https://github.com/wu-kan/wu-kan.github.io/fork" data-icon="octicon-repo-forked" data-show-count="true">Fork</a><a class="github-button" aria-label="Issue wu-kan/wu-kan.github.io on GitHub" href="https://github.com/wu-kan/wu-kan.github.io/issues" data-icon="octicon-issue-opened" data-show-count="true">Issue</a>
+
+## 声明
+
+除特别声明或转载外，所有博文采用[署名-相同方式共享 4.0 国际](https://creativecommons.org/licenses/by-sa/4.0/deed.zh)协议进行许可。
+
+博客基于[MIT License](https://github.com/wu-kan/wu-kan.github.io/blob/master/LICENSE)开源于[GitHub](https://github.com/wu-kan/wu-kan.github.io)。
 
 ## 致谢
 
-* [Jekyll](https://github.com/jekyll/jekyll) - 这是本站存在的根基
-* [Kiko-now](<https://github.com/aweekj/kiko-now>) - 我首先是fork这个主题，然后再其上进行修改汉化，才有了LOFFER
-* [Font Awesome](<https://fontawesome.com/>) - 社交网络图标来自FontAwesome的免费开源内容
+托管于[Github Pages](https://pages.github.com/)，感谢。
 
+博客引擎来自于[jekyll/jekyll](https://github.com/jekyll/jekyll)，感谢。
 
+CDN加速服务来自于[jsdelivr](https://www.jsdelivr.com/)，感谢。
 
-## 帮助这个项目
+博客主题基于[poole/lanyon](https://github.com/poole/lanyon)，感谢。
 
-介绍更多人来使用它，摆脱lofter自由飞翔！
+图标库来自于[<i class="fab fa-font-awesome"></i>fontawesome-free](https://fontawesome.com/)，感谢。
 
-当然如果单说写同人的话，我还是建议大家都去AO3，但是自家博客自己架也很酷炫，你还可以选择很多其他的forkable Jeykll主题，GitHub上有很多，或者试试其他博客架设工具，例如Hexo，与代码斗其乐无穷。
+留言和阅读量系统来自于[Valine](https://valine.js.org/)和[LeanCloud](https://leancloud.cn/)，感谢。
 
-最后，回到[LOFFER](https://github.com/FromEndWorld/LOFFER)，给我点一个☆吧！
+页面统计来自于[不蒜子](http://busuanzi.ibruce.info/)，感谢。
 
-![img](https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/givemefive.png)
+博文目录插件来自于[ghiculescu/jekyll-table-of-contents](https://github.com/ghiculescu/jekyll-table-of-contents)，感谢。
+
+博客搜索插件来自于[christian-fei/Simple-Jekyll-Search](https://github.com/christian-fei/Simple-Jekyll-Search)，感谢。
+
+代码高亮及插件来自于[PrismJS](https://prismjs.com/)，感谢。
+
+Live2D来自于[stevenjoezhang/live2d-widget](https://github.com/stevenjoezhang/live2d-widget)，感谢。
+
+头像翻转效果来自于[leopardpan/leopardpan.github.io](https://github.com/leopardpan/leopardpan.github.io)，感谢。
+
+## Feature/Todo
+
+从[这个页面](https://magical-girl.site/)得到的灵感，目标是博客上除了文章和作为导航的Live2D之外尽量不出现其他的模块。
+
+- [x] 完成博客文章标签页
+- [ ] 完成博客文章分类页（分类暂时和标签没区别）
+- [ ] 重写博客首页，做一个有意思的封面，不再显示文章
+- [x] 加入评论系统，暂时考虑用valine+leancloud实现
+  - [x] 基于valine的阅读量统计
+- [x] 不蒜子统计
+- [x] [<i class="fab fa-font-awesome"></i>fontawesome-free](https://fontawesome.com/)
+- [x] 全站搜索
+- [x] [ribbon动态背景](https://github.com/hustcc/ribbon.js)
+- [x] 调整代码块风格，并加上代码选中按钮
+- [x] 加入可以自动展开、标号的目录
+  - [x] 目录标号
+  - [ ] 自动展开
+- [x] mermaid
+  - [x] Markdown代码扩展
+- [x] $\KaTeX$
+- [x] Live2D
+  - [x] 加上切换Live2D显示/关闭的按钮
+  - [ ] 使用自己搭建的Live2D后端API
+    - [ ] 收集一些Live2D Model
+
+## 初心
+
+我曾做什么？
+
+我正做什么？
+
+我想做什么？
+
+我该做什么？
+
+> 章北海感到父亲的灵魂从冥冥中降落到飞船上，与他融为一体，他按动了操作界面上那个最后的按钮，心中默念出那个他用尽一生的努力所追求的指令：
+> > “‘自然选择’，前进四！”
+
+## 历程
+
+### 正在进行 v2.3.1
+
+- [ ] 所有插件完全使用autoloader加载，参数通过函数传给js
+  - [x] katex
+  - [x] mermaid
+  - [ ] prism
+- [ ] katex行间公式支持修复
+- [x] `sidebar-overlay`修复
+- [x] 博文显示信息增加tag
+- [x] 页面显示适应宽屏显示器
+- [x] 修复赞助按钮点两次才出现的Bug
+
+### 2019-08-30 v2.3.0
+
+- 更换cdn为[jsdelivr](https://www.jsdelivr.com/)
+- 升级fontaswsomev4.7.0至fontawesome-freev5.10.2，支持的图标数量由675增加至1535
+- 所有脚本和插件JSLoader化，增加移植性和访问速度
+- 界面调整
+  - 正文部分增加背景，从而减少动态ribbon背景影响的阅读体验
+  - sidebar微调
+- layout删除document页
+
+### 2019-07-06 v2.2.1
+
+- prismjs使用unpkg.com加速
+- 删去layout中的404页（因为只需要引入js脚本）
+
+### 2019-06-28 v2.2.0
+
+- 博客结构微调
+- 将大部分博客用到的jscdn换成unpkg.com，感谢其提供的加速服务~
+- 留言板加入友链
+
+### 2019-05-03 v2.1.4
+
+- valine更新
+  - 现在支持记录访问者IP
+  - 每次重新拉取评论者头像
+
+### 2019-04-29 v2.1.3
+
+- 页面样式微调，将masthead调矮，将标题字号改小
+
+### 2019-03-20 v2.1.2
+
+- 修复sidebar展开时回到顶部的问题
+
+### 2019-03-18 v2.1.1
+
+- 一些界面上的小调整
+
+### 2019-03-01 v2.1.0
+
+- 调整某些插件
+- layout新增document页，一个只开启$\KaTeX$而不引入任何其他样式的页面，主要是方便自己生成可打印的ICPC模板和一些课程报告
+- layout新增404页，可选择开启腾讯公益
+- mermaid支持markdown扩展了
+
+### 2019-02-24 v2.0.1
+
+- sidebar的触发按钮样式换成了bars，原来的样式更像是菜单
+- 一点页面上的小调整
+
+### 2019-02-23 v2.0.0
+
+- 重构完成
+- 正式开源
+
+### 2019-02-19
+
+- 模块化·初步
+- 博客搜索实现
+
+### 2019-02-01
+
+- [署名-相同方式共享 4.0 国际](https://creativecommons.org/licenses/by-sa/4.0/deed.zh)。
+- 社会主义核心价值观点击特效，感谢[dujin](https://www.dujin.org/9088.html)。
+- 打赏。
+
+### 2019-01-31
+
+- mathjax换katex
+- post访问量统计
+
+### 2019-01-24
+
+- 代码高亮
+- 选中代码按钮
+- 代码语言按钮
+
+### 2019-01-23
+
+- 加入文章目录到SideBar
+
+### 2019-01-22
+
+- 加入Ribbon动态背景
+
+### 2019-01-21
+
+- 加入valine评论系统，留言页实现
+
+### 2019-01-20
+
+- 加入归档页
+
+### 2019-01-19
+
+- 加入标签页
+
+### 2019-01-18
+
+- 开始用Jekyll重构整个博客
+
+折腾吧，折腾是才最好玩的。
+
+### 2019-01-13
+
+- 更换Next.Muse主题模板
+- 少量修改页面自定义样式布局，主要是sidebar
+- 将网易云音乐iframe移动到description，感觉挺有意思的
+
+### 2019-01-12
+
+- 将NexT版本更新至v6.7.0
+
+### 2018-12-23
+
+- 页面字体修改
+- 网易云音乐iframe加入SideBar
+
+### 2018-12-16
+
+- 引入mermaid支持
+- 修复部分Latex渲染的Bug
+
+### 2018-11-24
+
+- 将NexT版本更新至v6.5.0
+- 用Valine更换失效的Gitment评论系统
+- 加入Leancloud和busuanzi页面统计
+
+### 2018-11-20
+
+- 谷歌，百度搜索页面提交
+
+### 2018-11-18
+
+- 全局透明化
+- 动态背景
+- 页面加载动画
+- Latex支持
+
+### 2018-11-16
+
+- 主题由默认的Landspace换至NexT v5.1.4
+- 使用Next.Pisces主题模板
+- 开始对网页进行自定义样式布局
+- 尝试加入Gitment，但初始化总是不成功
+
+### 2018-11-15
+
+- 在Github上成功部署博客
+- 成功迁移[原CSDN博客](https://blog.csdn.net/w_weilan)上的所有文章
+- live2d
