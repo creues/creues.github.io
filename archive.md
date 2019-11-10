@@ -1,4 +1,4 @@
 ---
 layout: archive
-title: 归档
+title: 更多精彩文章，请点击
 ---
