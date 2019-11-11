@@ -37,3 +37,4 @@ title: 世界美好与你环环相扣 ～～～～～ 主页
 {% endfor %}
 
 <a href ="http://www.itxdl.cn/"><img src="./public/image/xdl.png" alt="alt test" style="border-radius:50%;width:100px;height:100px"></a>
+
