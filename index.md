@@ -36,4 +36,4 @@ title: 世界美好与你环环相扣 ～～～～～ 主页
 
 {% endfor %}
 
-<a href ="">兄弟连</a>
+<a href ="http://www.itxdl.cn/"><img src="./public/image/xdl.png" alt="alt test"></a>
